@@ -19,8 +19,6 @@ defmodule AccountWeb.Router do
 
   scope "/", AccountWeb do
     pipe_through :browser
-
-    get "/", HomeController, :index
   end
 
   # Other scopes may use custom stacks.

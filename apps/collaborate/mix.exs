@@ -1,9 +1,9 @@
-defmodule Account.MixProject do
+defmodule Collaborate.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :account,
+      app: :collaborate,
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -23,7 +23,7 @@ defmodule Account.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Account.Application, []},
+      mod: {Collaborate.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -37,10 +37,7 @@ defmodule Account.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:bcrypt_elixir, "~> 2.0"},
       {:phoenix, "~> 1.5.1"},
-      {:phoenix_live_view, "~> 0.12.0"},
-      {:floki, ">= 0.0.0", only: :test},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_dashboard, "~> 0.2.0"},
@@ -48,10 +45,7 @@ defmodule Account.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
-      {:ecto, "~> 3.4"},
-      {:data_store, in_umbrella: true},
-      {:phx_gen_auth, "~> 0.2.0", only: [:dev], runtime: false}
+      {:plug_cowboy, "~> 2.0"}
     ]
   end
 
