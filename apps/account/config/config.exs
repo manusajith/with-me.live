@@ -13,7 +13,8 @@ config :account, AccountWeb.Endpoint,
   secret_key_base: "tLo0H0h0ABuYrDmZrOFY+WBV+T836F4XFv17oSuKNIE1wl5D7Gjq6bDiPrebgiKg",
   render_errors: [view: AccountWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Account.PubSub,
-  live_view: [signing_salt: "Gq4NKCkJ"]
+  live_view: [signing_salt: "Gq4NKCkJ"],
+  server: false
 
 # Configures Elixir's Logger
 config :logger, :console,

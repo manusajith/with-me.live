@@ -13,7 +13,8 @@ config :collaborate, CollaborateWeb.Endpoint,
   secret_key_base: "OjFj86OvXzc//zFNEEras5IYACXoCydogrunYt0c7HdAh5GR3T0K/M97IqnBbEUI",
   render_errors: [view: CollaborateWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Collaborate.PubSub,
-  live_view: [signing_salt: "zQy/4qY2"]
+  live_view: [signing_salt: "zQy/4qY2"],
+  server: false
 
 # Configures Elixir's Logger
 config :logger, :console,
