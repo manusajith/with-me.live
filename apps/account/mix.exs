@@ -37,6 +37,7 @@ defmodule Account.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 2.0"},
       {:phoenix, "~> 1.5.1"},
       {:phoenix_live_view, "~> 0.12.0"},
       {:floki, ">= 0.0.0", only: :test},
@@ -47,7 +48,8 @@ defmodule Account.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:phx_gen_auth, "~> 0.2.0", only: [:dev], runtime: false}
     ]
   end
 

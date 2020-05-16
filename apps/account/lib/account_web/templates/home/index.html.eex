@@ -1,0 +1,24 @@
+<div class="hero is-default is-bold is-fullheight">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-6">
+          <figure class="">
+            <img src="<%= Routes.static_path(@conn, "/images/landing.svg") %>"/>
+          </figure>
+        </div>
+        <div class="column is-5 is-offset-1 is-hero-title">
+          <h1 class="title is-1 is-bigger">
+            Share Your Slides
+          </h1>
+          <h2 class="subtitle is-3">
+            Present your slides with realtime interaction with your audience.
+          </h2>
+          <p class="">
+            Coming soon. Stay tuned.!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
