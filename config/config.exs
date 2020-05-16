@@ -1,18 +1,29 @@
-# This file is responsible for configuring your umbrella
-# and **all applications** and their dependencies with the
-# help of the Config module.
-#
-# Note that all applications in your umbrella share the
-# same configuration and dependencies, which is why they
-# all use the same configuration file. If you want different
-# configurations or dependencies per app, it is best to
-# move said applications out of the umbrella.
 import Config
 
-# Sample configuration:
-#
-#     config :logger, :console,
-#       level: :info,
-#       format: "$date $time [$level] $metadata$message\n",
-#       metadata: [:user_id]
-#
+config :phoenix, :json_library, Jason
+
+config :storage, Storage.Repo,
+  username: "neo",
+  database: "with_me_dev"
+
+config :account, AccountWeb.Endpoint,
+  url: [host: "localhost"],
+  secret_key_base: "tLo0H0h0ABuYrDmZrOFY+WBV+T836F4XFv17oSuKNIE1wl5D7Gjq6bDiPrebgiKg",
+  render_errors: [view: AccountWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Account.PubSub,
+  live_view: [signing_salt: "Gq4NKCkJ"],
+  http: [port: 4000],
+  debug_errors: true,
+  code_reloader: true,
+  check_origin: false,
+  watchers: [
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin",
+      cd: Path.expand("../apps/account/assets", __DIR__)
+    ]
+  ]
+
+config :account, ecto_repos: [Storage.Repo]
