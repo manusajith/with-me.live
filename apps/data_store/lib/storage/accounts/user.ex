@@ -1,4 +1,4 @@
-defmodule Storage.Accounts.User do
+defmodule DataStore.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 

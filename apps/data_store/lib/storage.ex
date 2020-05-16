@@ -1,6 +1,6 @@
-defmodule Storage do
+defmodule DataStore do
   @moduledoc """
-  Documentation for `Storage`.
+  Documentation for `DataStore`.
   """
 
   @doc """
@@ -8,7 +8,7 @@ defmodule Storage do
 
   ## Examples
 
-      iex> Storage.hello()
+      iex> DataStore.hello()
       :world
 
   """

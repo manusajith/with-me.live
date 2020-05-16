@@ -1,4 +1,4 @@
-defmodule Storage.Application do
+defmodule DataStore.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,10 +8,10 @@ defmodule Storage.Application do
   @spec start(any, any) :: {:error, any} | {:ok, pid}
   def start(_type, _args) do
     children = [
-      Storage.Repo
+      DataStore.Repo
     ]
 
-    opts = [strategy: :one_for_one, name: Storage.Supervisor]
+    opts = [strategy: :one_for_one, name: DataStore.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

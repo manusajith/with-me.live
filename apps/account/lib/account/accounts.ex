@@ -4,7 +4,7 @@ defmodule Account.Accounts do
   """
 
   import Ecto.Query, warn: false
-  alias Storage.Repo
+  alias DataStore.Repo
 
   alias Account.Accounts.{User, UserToken, UserNotifier}
 
@@ -75,7 +75,7 @@ defmodule Account.Accounts do
 
   """
   def register_user(attrs) do
-    %Storage.Accounts.User{}
+    %DataStore.Accounts.User{}
     |> User.registration_changeset(attrs)
     |> Repo.insert()
   end
@@ -89,7 +89,7 @@ defmodule Account.Accounts do
       %Ecto.Changeset{data: %User{}}
 
   """
-  def change_user_registration(%Storage.Accounts.User{} = user, attrs \\ %{}) do
+  def change_user_registration(%DataStore.Accounts.User{} = user, attrs \\ %{}) do
     User.registration_changeset(user, attrs)
   end
 
@@ -138,7 +138,7 @@ defmodule Account.Accounts do
     context = "change:#{user.email}"
 
     with {:ok, query} <- UserToken.verify_user_change_email_token_query(token, context),
-         %Storage.Accounts.UserToken{sent_to: email} <- Repo.one(query),
+         %DataStore.Accounts.UserToken{sent_to: email} <- Repo.one(query),
          {:ok, _} <- Repo.transaction(user_email_multi(user, email, context)) do
       :ok
     else
@@ -163,7 +163,7 @@ defmodule Account.Accounts do
       {:ok, %{to: ..., body: ...}}
 
   """
-  def deliver_update_email_instructions(%Storage.Accounts.User{} = user, current_email, update_email_url_fun)
+  def deliver_update_email_instructions(%DataStore.Accounts.User{} = user, current_email, update_email_url_fun)
       when is_function(update_email_url_fun, 1) do
     {encoded_token, user_token} =
       UserToken.build_user_email_token(user, "change:#{current_email}")
@@ -254,7 +254,7 @@ defmodule Account.Accounts do
       {:error, :already_confirmed}
 
   """
-  def deliver_user_confirmation_instructions(%Storage.Accounts.User{} = user, confirmation_url_fun)
+  def deliver_user_confirmation_instructions(%DataStore.Accounts.User{} = user, confirmation_url_fun)
       when is_function(confirmation_url_fun, 1) do
     if user.confirmed_at do
       {:error, :already_confirmed}
@@ -273,7 +273,7 @@ defmodule Account.Accounts do
   """
   def confirm_user(token) do
     with {:ok, query} <- UserToken.verify_user_email_token_query(token, "confirm"),
-         %Storage.Accounts.User{} = user <- Repo.one(query),
+         %DataStore.Accounts.User{} = user <- Repo.one(query),
          {:ok, %{user: user}} <- Repo.transaction(confirm_user_multi(user)) do
       {:ok, user}
     else
@@ -298,7 +298,7 @@ defmodule Account.Accounts do
       {:ok, %{to: ..., body: ...}}
 
   """
-  def deliver_user_reset_password_instructions(%Storage.Accounts.User{} = user, reset_password_url_fun)
+  def deliver_user_reset_password_instructions(%DataStore.Accounts.User{} = user, reset_password_url_fun)
       when is_function(reset_password_url_fun, 1) do
     {encoded_token, user_token} = UserToken.build_user_email_token(user, "reset_password")
     Repo.insert!(user_token)
@@ -319,7 +319,7 @@ defmodule Account.Accounts do
   """
   def get_user_by_reset_password_token(token) do
     with {:ok, query} <- UserToken.verify_user_email_token_query(token, "reset_password"),
-         %Storage.Accounts.User{} = user <- Repo.one(query) do
+         %DataStore.Accounts.User{} = user <- Repo.one(query) do
       user
     else
       _ -> nil

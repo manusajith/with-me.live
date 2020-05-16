@@ -22,7 +22,7 @@ defmodule Account.Accounts.User do
     |> validate_required([:email])
     |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "must have the @ sign and no spaces")
     |> validate_length(:email, max: 160)
-    |> unsafe_validate_unique(:email, Storage.Repo)
+    |> unsafe_validate_unique(:email, DataStore.Repo)
     |> unique_constraint(:email)
   end
 
@@ -87,7 +87,7 @@ defmodule Account.Accounts.User do
   If there is no user or the user doesn't have a password, we call
   `Bcrypt.no_user_verify/0` to avoid timing attacks.
   """
-  def valid_password?(%Storage.Accounts.User{hashed_password: hashed_password}, password)
+  def valid_password?(%DataStore.Accounts.User{hashed_password: hashed_password}, password)
       when is_binary(hashed_password) and byte_size(password) > 0 do
     Bcrypt.verify_pass(password, hashed_password)
   end

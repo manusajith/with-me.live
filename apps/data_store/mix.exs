@@ -1,9 +1,9 @@
-defmodule Storage.MixProject do
+defmodule DataStore.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :storage,
+      app: :data_store,
       version: "0.1.0",
       build_path: "../../_build",
       config_path: "../../config/config.exs",
@@ -20,7 +20,7 @@ defmodule Storage.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Storage.Application, []}
+      mod: {DataStore.Application, []}
     ]
   end
 

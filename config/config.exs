@@ -2,7 +2,7 @@ import Config
 
 config :phoenix, :json_library, Jason
 
-config :storage, Storage.Repo,
+config :data_store, DataStore.Repo,
   username: "neo",
   database: "with_me_dev"
 
@@ -26,4 +26,4 @@ config :account, AccountWeb.Endpoint,
     ]
   ]
 
-config :account, ecto_repos: [Storage.Repo]
+config :account, ecto_repos: [DataStore.Repo]

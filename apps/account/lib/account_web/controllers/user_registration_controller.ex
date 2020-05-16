@@ -2,7 +2,7 @@ defmodule AccountWeb.UserRegistrationController do
   use AccountWeb, :controller
 
   alias Account.Accounts
-  alias Storage.Accounts.User
+  alias DataStore.Accounts.User
   alias AccountWeb.UserAuth
 
   def new(conn, _params) do
