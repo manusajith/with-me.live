@@ -1,12 +1,12 @@
 defmodule Proxy.Endpoint do
   use Phoenix.Endpoint, otp_app: :proxy
 
-  plug Proxy.Plug, %{
+  plug(Proxy.Plug, %{
     "meet.with-me.live" => MeetWeb.Endpoint,
     "account.with-me.live" => AccountWeb.Endpoint,
     "collaborate.with-me.live" => CollaborateWeb.Endpoint,
     "default" => CollaborateWeb.Endpoint
-  }
+  })
 
   def init(_key, config) do
     updated_config =

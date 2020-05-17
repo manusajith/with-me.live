@@ -163,7 +163,11 @@ defmodule Account.Accounts do
       {:ok, %{to: ..., body: ...}}
 
   """
-  def deliver_update_email_instructions(%DataStore.Accounts.User{} = user, current_email, update_email_url_fun)
+  def deliver_update_email_instructions(
+        %DataStore.Accounts.User{} = user,
+        current_email,
+        update_email_url_fun
+      )
       when is_function(update_email_url_fun, 1) do
     {encoded_token, user_token} =
       UserToken.build_user_email_token(user, "change:#{current_email}")
@@ -254,7 +258,10 @@ defmodule Account.Accounts do
       {:error, :already_confirmed}
 
   """
-  def deliver_user_confirmation_instructions(%DataStore.Accounts.User{} = user, confirmation_url_fun)
+  def deliver_user_confirmation_instructions(
+        %DataStore.Accounts.User{} = user,
+        confirmation_url_fun
+      )
       when is_function(confirmation_url_fun, 1) do
     if user.confirmed_at do
       {:error, :already_confirmed}
@@ -298,7 +305,10 @@ defmodule Account.Accounts do
       {:ok, %{to: ..., body: ...}}
 
   """
-  def deliver_user_reset_password_instructions(%DataStore.Accounts.User{} = user, reset_password_url_fun)
+  def deliver_user_reset_password_instructions(
+        %DataStore.Accounts.User{} = user,
+        reset_password_url_fun
+      )
       when is_function(reset_password_url_fun, 1) do
     {encoded_token, user_token} = UserToken.build_user_email_token(user, "reset_password")
     Repo.insert!(user_token)
