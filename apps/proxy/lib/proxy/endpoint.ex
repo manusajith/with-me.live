@@ -2,8 +2,9 @@ defmodule Proxy.Endpoint do
   use Phoenix.Endpoint, otp_app: :proxy
 
   plug Proxy.Plug, %{
-    "account.lvh.me" => AccountWeb.Endpoint,
-    "collaborate.lvh.me" => CollaborateWeb.Endpoint,
+    "meet.with-me.live" => MeetWeb.Endpoint,
+    "account.with-me.live" => AccountWeb.Endpoint,
+    "collaborate.with-me.live" => CollaborateWeb.Endpoint,
     "default" => CollaborateWeb.Endpoint
   }
 

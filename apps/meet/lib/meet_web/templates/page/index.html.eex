@@ -1,0 +1,9 @@
+<label for="localVideo">Local Video Stream</label>
+<video id="localVideo" autoplay muted></video>
+<label for="remoteVideo">Remote Video Stream</label>
+<video id="remoteVideo" autoplay></video>
+
+<button id="connect">Connect</button>
+<button id="call">Call</button>
+<button id="hangup">Disconnect</button>
+
