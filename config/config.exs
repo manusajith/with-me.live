@@ -54,4 +54,24 @@ config :collaborate, CollaborateWeb.Endpoint,
     ]
   ]
 
+config :slide, SlideWeb.Endpoint,
+  url: [host: "localhost"],
+  secret_key_base: "J5T37N6mUNtR03113qF6mqT/78p5XEdD/eAM4KnVYjyNWumbF/14Gl4wIAhyEqMD",
+  render_errors: [view: SlideWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Slide.PubSub,
+  live_view: [signing_salt: "KZp9C3/r"],
+  http: [port: 4000],
+  debug_errors: true,
+  code_reloader: true,
+  check_origin: false,
+  watchers: [
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--mode",
+      "development",
+      "--watch-stdin",
+      cd: Path.expand("../apps/slide/assets", __DIR__)
+    ]
+  ]
+
 config :account, ecto_repos: [DataStore.Repo]
