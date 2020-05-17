@@ -1,0 +1,16 @@
+cd ..
+MIX_ENV=prod mix phx.digest
+
+cd ../meet
+cd assets
+npm install
+cd ..
+npm run deploy --prefix ./assets
+MIX_ENV=prod mix phx.digest
+
+cd ../collaborate
+cd assets
+npm install
+cd ..
+npm run deploy --prefix ./assets
+MIX_ENV=prod mix phx.digest
