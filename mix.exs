@@ -11,7 +11,6 @@ defmodule WithMe.MixProject do
         with_me: [
           applications: [
             data_store: :permanent,
-            proxy: :permanent,
             collaborate: :permanent,
             account: :permanent,
             meet: :permanent

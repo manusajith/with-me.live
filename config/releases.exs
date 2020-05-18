@@ -1,11 +1,5 @@
 import Config
 
-config :proxy, Proxy.Endpoint,
-  http: [port: {:system, "PORT"}],
-  url: [host: "with-me.live", port: 80],
-  secret_key_base: Map.fetch!(System.get_env(), "SECRET_KEY_BASE"),
-  server: true
-
 database_url =
   System.get_env("DATABASE_URL") ||
     raise """

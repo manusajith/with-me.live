@@ -19,7 +19,8 @@ config :account, AccountWeb.Endpoint,
       "--watch-stdin",
       cd: Path.expand("../assets", __DIR__)
     ]
-  ]
+  ],
+  server: false
 
 # ## SSL Support
 #

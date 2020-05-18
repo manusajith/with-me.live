@@ -51,7 +51,8 @@ defmodule Account.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:ecto, "~> 3.4"},
       {:data_store, in_umbrella: true},
-      {:phx_gen_auth, "~> 0.2.0", only: [:dev], runtime: false}
+      {:phx_gen_auth, "~> 0.2.0", only: [:dev], runtime: false},
+      {:master_proxy, "~> 0.1"}
     ]
   end
 
