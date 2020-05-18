@@ -3,7 +3,8 @@ use Mix.Config
 config :phoenix, :serve_endpoints, true
 
 config :master_proxy,
-  http: [port: 80],
+  http: [:inet6, port: System.get_env("PORT") || 4000],
+  url: [host: "with-me.live", port: 80],
   backends: [
     %{
       host: ~r{^collaborate\.with-me\.live$},
