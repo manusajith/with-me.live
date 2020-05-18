@@ -10,6 +10,10 @@ config :master_proxy,
       phoenix_endpoint: CollaborateWeb.Endpoint
     },
     %{
+      host: ~r{^slide\.with-me\.live$},
+      phoenix_endpoint: SlideWeb.Endpoint
+    },
+    %{
       host: ~r{^meet\.with-me\.live$},
       phoenix_endpoint: MeetWeb.Endpoint
     },
