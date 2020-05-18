@@ -13,7 +13,8 @@ defmodule WithMe.MixProject do
             data_store: :permanent,
             collaborate: :permanent,
             account: :permanent,
-            meet: :permanent
+            meet: :permanent,
+            slide: :permanent
           ]
         ]
       ]

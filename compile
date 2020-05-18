@@ -14,3 +14,10 @@ npm install
 cd ..
 npm run deploy --prefix ./assets
 MIX_ENV=prod mix phx.digest
+
+cd ../slide
+cd assets
+npm install
+cd ..
+npm run deploy --prefix ./assets
+MIX_ENV=prod mix phx.digest
