@@ -18,6 +18,7 @@ defmodule SlideWeb.Router do
   scope "/", SlideWeb do
     pipe_through :browser
 
+    live "/chat/:id", ChatLive, :show
     live "/share/:id", ShareLive, :index
   end
 
